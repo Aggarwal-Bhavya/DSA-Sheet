@@ -1,6 +1,6 @@
 class Solution {
-    //Approach I
     public String countAndSay(int n) {
+	   //Approach I
         StringBuilder res = new StringBuilder("1");
         
         //checking base condition 
