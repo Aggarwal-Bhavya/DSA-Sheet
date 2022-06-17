@@ -1,6 +1,6 @@
 class Solution {
+    //Approach I
     public String countAndSay(int n) {
-	   //Approach I
         StringBuilder res = new StringBuilder("1");
         
         //checking base condition 
@@ -27,5 +27,39 @@ class Solution {
             res.append(curr);
         }
         return res.toString();
+    }
+
+    //Approach II
+    static String[] answers = new String[30];
+    public String countAndSay(int n) {
+        if(answers[n-1] != null)
+            return answers[n-1];
+        
+        answers[0] = "1";
+        for(int i=1; i<n; i++) {
+            if(answers[i] == null)
+                answers[i] = say(answers[i-1]);
+        }
+        return answers[n-1];
+    }
+    
+    private String say(String s) {
+        StringBuilder sb = new StringBuilder();
+        char prev = s.charAt(0);
+        int count = 1;
+        
+        for(int i=1; i<s.length(); i++) {
+            if(prev == s.charAt(i))
+                count++;
+            else {
+                sb.append(count);
+                sb.append(prev);
+                count = 1;
+                prev = s.charAt(i);
+            }
+        }
+        sb.append(count);
+        sb.append(prev);
+        return sb.toString();
     }
 }
