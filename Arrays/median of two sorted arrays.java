@@ -1,6 +1,22 @@
 //Median of two sorted arrays of variable length
 class Solution
 {
+     //Approach 1 - Brute Force
+	public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        List<Integer> list = new ArrayList<>();
+        double res = 0.0;
+        for(int element: nums1) list.add(element);
+        for(int element: nums2) list.add(element);
+        list.sort(Comparator.naturalOrder());
+        int mid = list.size()/2;
+        if(list.size() % 2 == 0)
+            res = (double) (list.get(mid)+(list.get(mid-1)))/2;
+        else
+            res = (double)(list.get(mid));
+        return res;
+     }
+
+	//Approach 2 - Optimized Solution for O(log(m+n))
 	public double findMedianSortedArrays(int[] A, int[] B) 
 	{
         int m = A.length;
