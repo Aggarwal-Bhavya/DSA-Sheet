@@ -1,4 +1,4 @@
-//Leetcode- Q1658
+//Leetcode Q-1658
 //Minimum Operations to reduce X to zero
 class Solution {
     //Approach 1
