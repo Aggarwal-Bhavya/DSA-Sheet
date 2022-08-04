@@ -98,7 +98,7 @@
     }
 
 //Approach 4 - Optimised solution with no extra space
-//Optimised for Approach 2, where matrix's column 0 and row 0 are used as dummy
+//Optimised for Approach 3, where matrix's column 0 and row 0 are used as dummy
 //Time Complexity = O(n*m) and Space Complexity = O(1)
     public void setZeroes(int[][] matrix) {
         int col0 = 1, rows = matrix.length, cols = matrix[0].length;
