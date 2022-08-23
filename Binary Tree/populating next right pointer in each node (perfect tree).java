@@ -1,6 +1,32 @@
 //Leetcode Q-116
 //Populating Next Right Pointers in Each Node
-//Approach 1: Here, we have DFS + BFS propogation
+//Approach 1: Simple BFS
+class Solution {
+    public Node connect(Node root) {
+        if(root == null)    return root;
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        
+        while(!queue.isEmpty()) {
+            int size = queue.size();
+            Node dummy = new Node(0);
+            while(size-- > 0) {
+                Node node = queue.remove();
+                dummy.next = node;
+                dummy = dummy.next;
+                
+                if(node.left != null)   queue.offer(node.left);
+                if(node.right != null)  queue.offer(node.right);
+            }
+        }
+        return root;
+    }
+}
+//Time Complexity = O(n)
+//Space Complexity = O(n)
+
+
+//Approach 2: Here, we have DFS + BFS propogation
 //We use the parent's next to establish the next pointer
 //for other child nodes.
 class Solution {
@@ -27,9 +53,10 @@ class Solution {
     }
 }
 //Time Complexity = O(n)
-//Space Complexity = O(n)
+//Space Complexity = O(n) ~O(1) because in question it mentions that implicit stack isn't to be considered as extra space
 
-//Approach 2: Optimised space complexity approach
+
+//Approach 3: Optimised space complexity approach
 //We use to pointers, one curr for the current node (traverse on the next level)
 //and second nextLevel to hop onto the next level (it eliminates queue).
 class Solution {
